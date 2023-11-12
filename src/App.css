@@ -363,3 +363,24 @@ li {
 .Mui-selected {
   color: aliceblue !important; /* Set the text color for the selected page */
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #148ba6;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #084469;
+  border-radius: 0.2rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #12547c;
+}
