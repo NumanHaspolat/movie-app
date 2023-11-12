@@ -57,7 +57,6 @@ form {
 
 .login-parent {
   display: flex;
-
   align-items: center;
   justify-content: center;
   height: 89vh;
@@ -178,7 +177,7 @@ form {
 
 .card-img {
   transition: 0.3s;
-  filter: blur(2px);
+  /* filter: blur(2px); */
 }
 
 .card-img:hover {
@@ -342,6 +341,7 @@ li {
   gap: 20px;
   justify-content: center;
   margin-top: 2rem;
+  text-align: center;
 }
 .go-back {
   position: absolute;

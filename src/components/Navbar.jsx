@@ -15,7 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
-const pages = ["Favorites", "Contact"];
+const pages = ["Favorites"];
 // const settings = ["Login", "Register", "Logout"];
 
 function Navbar() {
