@@ -5,8 +5,6 @@ import Cards from "../components/Cards";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const Favorites = () => {
-  const { movies, getMovies, loading, totalPages, currentPage } =
-    useContext(MovieContext);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
   useEffect(() => {
