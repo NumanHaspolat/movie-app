@@ -1,0 +1,19 @@
+.toast-warn {
+  background-color: rgb(139, 84, 20);
+  color: #ecf0f1;
+}
+
+.toast-success {
+  background-color: #1a914b;
+  color: #ecf0f1;
+}
+
+.toast-error {
+  background-color: #5f1810;
+  color: #ecf0f1;
+}
+
+/* Mobile size adjustment */
+@media only screen and (max-width: 600px) {
+  /* Adjust the size as needed */
+}

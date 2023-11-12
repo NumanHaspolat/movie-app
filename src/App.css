@@ -35,12 +35,15 @@ Link {
 }
 
 .inp {
-  padding: 0.5rem;
+  padding: 0.5rem 0.7rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-  border-radius: 0.3rem;
-  border: 1px solid #001c2e;
+  border-radius: 0.4rem;
+  border: 0;
+  border-bottom: 3px solid #001c2e;
+  border-right: 1px solid #001c2e;
   outline: none;
+  min-width: 250px;
 }
 
 form {
@@ -108,6 +111,23 @@ form {
   justify-content: center;
 }
 
+@media (max-width: 460px) {
+  form {
+    flex-direction: column;
+  }
+  .login-div {
+    width: 300px;
+    margin: auto;
+  }
+  .login-div input {
+    margin: auto;
+    width: 240px !important;
+  }
+  .pass {
+    width: 270px !important;
+  }
+}
+
 .card-bottom button {
   background-color: #084469;
 }
@@ -158,9 +178,188 @@ form {
 
 .card-img {
   transition: 0.3s;
+  filter: blur(2px);
 }
 
 .card-img:hover {
-  transform: scale(1.1);
+  transform: scale(1.07);
   cursor: pointer;
+  filter: blur(0px);
+}
+
+.dName {
+  position: absolute;
+  right: 40px;
+}
+
+@media (max-width: 550px) {
+  .dName {
+    display: none;
+  }
+}
+
+.video-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem;
+}
+
+.video {
+  border: none;
+  width: 400px;
+  height: 240px;
+  margin: auto;
+}
+
+.detail-div {
+  background-color: #124e73;
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+
+.detail-div h2 {
+  color: aliceblue;
+  text-align: center;
+  font-style: italic;
+  font-size: 2rem;
+}
+
+.poster {
+  width: 500px;
+  border-radius: 0.4rem;
+}
+
+h5 {
+  border-bottom: 1px solid aliceblue;
+  padding-bottom: 1rem;
+}
+
+.main-detail {
+  color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+.main-detail ul {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 0.5rem;
+}
+
+li {
+  list-style-type: none;
+}
+
+.main-detail a {
+  color: aliceblue;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.detail-div {
+  max-width: 1000px;
+  margin: auto;
+}
+
+@media (max-width: 870px) {
+  .main-detail {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 620px) {
+  .poster {
+    width: 300px;
+  }
+}
+@media (max-width: 407px) {
+  .poster {
+    width: 230px;
+  }
+
+  .video {
+    width: 230px;
+  }
+}
+
+.pagination-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: #124e73;
+  width: fit-content;
+  margin: auto;
+  color: aliceblue;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+}
+
+.no-movies-alert {
+  background-color: #084469;
+  color: aliceblue;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  width: fit-content;
+  margin: auto;
+}
+
+.selected-page {
+  background-color: #073c5e !important;
+  color: aliceblue !important;
+}
+
+.unselected-page {
+  background-color: 124e73 !important;
+  color: inherit !important;
+}
+
+.bordered-heart {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.bordered-heart:hover {
+  cursor: pointer;
+}
+
+.d-none {
+  display: none;
+}
+/* Add this to your existing CSS */
+
+.favorites-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.go-back {
+  position: absolute;
+  top: 17px;
+  left: 17px;
+}
+
+.fav-back {
+  background-color: #001c2e;
+  color: aliceblue;
+  padding: 0.8rem;
+  border-radius: 50%;
+}
+
+.MuiPaginationItem-page {
+  color: aliceblue !important; /* Set the text color as per your preference */
+}
+
+.Mui-selected {
+  color: aliceblue !important; /* Set the text color for the selected page */
 }

@@ -4,32 +4,56 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useContext } from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import { toastWarnNotify } from "../toastify/ToastNotify";
+
 
 const IMG_API = "https://image.tmdb.org/t/p/w1280";
-const defaultImage =
-  "https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80";
+
+// const defaultImage =
+//   "https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80";
 
 export default function Cards({ title, overview, bp, pp, voteAvg, id }) {
+  const [favs, setFavs] = useState([]);
   const shortenedOverview =
     overview.length > 70 ? overview.slice(0, 70) + "..." : overview;
 
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
 
-  const getVoteClass = (vote) => {
-    if (vote >= 8) {
-      return "green";
-    } else if (vote >= 6) {
-      return "orange";
-    }
-    if (vote >= 9.8) {
-      return "blue";
+  // Load favorites from localStorage on component mount
+  useEffect(() => {
+    const storedFavs = JSON.parse(localStorage.getItem("userFavorites")) || [];
+    setFavs(storedFavs.includes(id));
+  }, [id]);
+
+  const handleFavs = () => {
+    if (currentUser) {
+      // Toggle favorite status
+      setFavs(!favs);
+
+      // Retrieve stored favorites from localStorage
+      const storedFavs =
+        JSON.parse(localStorage.getItem("userFavorites")) || [];
+
+      // Update stored favorites based on current state
+      const updatedFavs = favs
+        ? storedFavs.filter((favId) => favId !== id)
+        : [...storedFavs, id];
+
+      // Save updated favorites to localStorage
+      localStorage.setItem("userFavorites", JSON.stringify(updatedFavs));
     } else {
-      return "red";
+      // Handle case when user is not logged in
+      // You may want to show a message or redirect to a login page
+      toastWarnNotify("User not logged in. Please log in to add favorites.");
     }
   };
 
@@ -43,7 +67,7 @@ export default function Cards({ title, overview, bp, pp, voteAvg, id }) {
       }}
     >
       <CardMedia
-      className="card-img"
+        className="card-img"
         sx={{
           color: "#1BDDF2",
           height: 0,
@@ -78,6 +102,12 @@ export default function Cards({ title, overview, bp, pp, voteAvg, id }) {
         >
           {voteAvg.toFixed(1)}
         </span>
+      )}
+
+      {favs ? (
+        <FavoriteIcon className="bordered-heart" onClick={handleFavs} />
+      ) : (
+        <FavoriteBorderIcon className="bordered-heart" onClick={handleFavs} />
       )}
     </Card>
   );

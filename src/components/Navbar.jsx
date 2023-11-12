@@ -12,11 +12,11 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import SlideshowIcon from "@mui/icons-material/Slideshow";
 import MenuItem from "@mui/material/MenuItem";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
-const pages = ["About ME", "Contact"];
-const settings = ["Login", "Register", "Logout"];
+const pages = ["Favorites", "Contact"];
+// const settings = ["Login", "Register", "Logout"];
 
 function Navbar() {
   const navgate = useNavigate();
@@ -51,8 +51,7 @@ function Navbar() {
     setAnchorElUser(null);
   };
 
-  // Avatar resmini al
-  const avatarSrc = getAvatar();
+  // const avatarSrc = getAvatar();
 
   return (
     <AppBar
@@ -104,13 +103,13 @@ function Navbar() {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
                 vertical: "top",
-                horizontal: "left",
+                horizontal: "right",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
@@ -119,7 +118,17 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem
+                  key={page}
+                  onClick={() => {
+                    if (page === "Favorites") {
+                      navgate("/favorites");
+                    } else if (page === "Contact") {
+                      navgate("/contact");
+                    }
+                    handleCloseNavMenu();
+                  }}
+                >
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -136,21 +145,14 @@ function Navbar() {
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
-              display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
               marginLeft: "1rem",
-              mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
             }}
           >
             Movie App
@@ -160,7 +162,14 @@ function Navbar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => {
+                  if (page === "Favorites") {
+                    navgate("/favorites");
+                  } else if (page === "Contact") {
+                    navgate("/contact");
+                  }
+                  handleCloseNavMenu();
+                }}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
@@ -173,6 +182,7 @@ function Navbar() {
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Typography
+                    className="dName"
                     variant="body2"
                     color="textSecondary"
                     sx={{ marginRight: 2, color: "white" }}

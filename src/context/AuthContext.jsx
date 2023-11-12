@@ -15,7 +15,7 @@ import {
   toastErrorNotify,
   toastSuccessNotify,
   toastWarnNotify,
-} from "../ToastNotify";
+} from "../toastify/ToastNotify";
 export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {

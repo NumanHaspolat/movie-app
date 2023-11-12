@@ -1,4 +1,6 @@
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./custom-toast.css"; // Import a custom CSS file for dark theme styling
 
 export const toastWarnNotify = (msg) => {
   toast.warn(msg, {
@@ -8,6 +10,7 @@ export const toastWarnNotify = (msg) => {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
+    className: "toast-warn", // Add a custom class for dark theme styling
   });
 };
 
@@ -19,6 +22,7 @@ export const toastSuccessNotify = (msg) => {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
+    className: "toast-success", // Add a custom class for dark theme styling
   });
 };
 
@@ -30,5 +34,6 @@ export const toastErrorNotify = (msg) => {
     pauseOnHover: true,
     draggable: true,
     progress: undefined,
+    className: "toast-error", // Add a custom class for dark theme styling
   });
 };

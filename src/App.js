@@ -1,5 +1,4 @@
-import AppRouter from "./AppRouter";
-
+import AppRouter from "./router/AppRouter";
 import "./App.css";
 import AuthContextProvider from "./context/AuthContext";
 import MovieContextProvider from "./context/MovieContext";
